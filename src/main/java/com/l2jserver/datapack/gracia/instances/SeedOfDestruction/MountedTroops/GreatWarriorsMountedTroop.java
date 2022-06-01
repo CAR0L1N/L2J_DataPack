@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -279,8 +279,7 @@ public final class GreatWarriorsMountedTroop extends AbstractInstance {
             HALL_1_SPAWNS.entrySet().forEach(entry -> {
                 for (int i = 0; i < entry.getValue(); i++) {
                     final Location location = _hallZone1.getRandomPoint();
-                    location.setHeading(getRandom(65536));
-                    L2Attackable spawn = (L2Attackable) addSpawn(entry.getKey(), location, false, 0, false, _world.getInstanceId());
+                    L2Attackable spawn = (L2Attackable) addSpawn(entry.getKey(), location, getRandom(65536), false, 0, false, _world.getInstanceId());
                     spawn.setIsNoRndWalk(true);
                     _world.npcList.add(spawn);
                 }
@@ -289,8 +288,7 @@ public final class GreatWarriorsMountedTroop extends AbstractInstance {
             HALL_2_SPAWNS.entrySet().forEach(entry -> {
                 for (int i = 0; i < entry.getValue(); i++) {
                     final Location location = _hallZone2.getRandomPoint();
-                    location.setHeading(getRandom(65536));
-                    L2Attackable spawn = (L2Attackable) addSpawn(entry.getKey(), location, false, 0, false, _world.getInstanceId());
+                    L2Attackable spawn = (L2Attackable) addSpawn(entry.getKey(), location, getRandom(65536), false, 0, false, _world.getInstanceId());
                     spawn.setIsNoRndWalk(true);
                     _world.npcList.add(spawn);
                 }

@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -500,10 +500,8 @@ public class EnergySeeds extends AbstractNpcAI {
 		L2NpcTemplate surpriseMobTemplate = NpcData.getInstance().getTemplate(npcId);
 		L2MonsterInstance monster = new L2MonsterInstance(surpriseMobTemplate);
 		monster.setCurrentHpMp(monster.getMaxHp(), monster.getMaxMp());
-		monster.setHeading(energy.getHeading());
-		monster.setInstanceId(energy.getInstanceId());
 		monster.setShowSummonAnimation(true);
-		monster.spawnMe(energy.getX(), energy.getY(), energy.getZ());
+		monster.spawnMe(energy.getLocation());
 		startQuestTimer("DeSpawnTask", 30000, monster, null);
 		return monster;
 	}
@@ -567,8 +565,7 @@ public class EnergySeeds extends AbstractNpcAI {
 					Location randomLocation = null;
 					boolean didFindSpawn = false;
 					while (!didFindSpawn) {
-						Location tempRandomLocation = _spawnZoneList.get(_zoneId).getRandomPoint();
-						tempRandomLocation.setZ(GeoData.getInstance().getSpawnHeight(tempRandomLocation));
+						Location tempRandomLocation = _spawnZoneList.get(_zoneId).getRandomPoint(true);
 						int locX = tempRandomLocation.getX();
 						int locY = tempRandomLocation.getY();
 						int locZ = tempRandomLocation.getZ();

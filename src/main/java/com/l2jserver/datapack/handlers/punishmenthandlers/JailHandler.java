@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -131,7 +131,6 @@ public class JailHandler implements IPunishmentHandler {
 	 * @param player
 	 */
 	private static void applyToPlayer(PunishmentTask task, L2PcInstance player) {
-		player.setInstanceId(0);
 		player.setIsIn7sDungeon(false);
 		
 		if (!TvTEvent.isInactive() && TvTEvent.isPlayerParticipant(player.getObjectId())) {

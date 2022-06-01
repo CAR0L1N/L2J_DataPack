@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -74,8 +74,7 @@ public final class ElcadiasTent extends AbstractInstance {
 		} else {
 			final InstanceWorld world = InstanceManager.getInstance().getPlayerWorld(talker);
 			world.removeAllowed(talker.getObjectId());
-			talker.setInstanceId(0);
-			talker.teleToLocation(EXIT_LOC);
+			talker.teleToLocation(EXIT_LOC, 0, false);
 		}
 		return super.onTalk(npc, talker);
 	}

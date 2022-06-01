@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -128,8 +128,7 @@ public class Q00131_BirdInACage extends Quest {
 				if (st.isCond(3)) {
 					st.giveItems(PARMES_LETTER, 1);
 					st.setCond(4, true);
-					player.setInstanceId(0);
-					player.teleToLocation(INSTANCE_EXIT, true);
+					player.teleToLocation(INSTANCE_EXIT, 0, true);
 					htmltext = event;
 				}
 				break;

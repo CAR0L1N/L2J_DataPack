@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -141,7 +141,7 @@ public final class Q10284_AcquisitionOfDivineSword extends Quest {
 					st.setMemoState(2);
 					final InstanceWorld world = InstanceManager.getInstance().getPlayerWorld(player);
 					world.removeAllowed(player.getObjectId());
-					player.setInstanceId(0);
+					player.setLocation(player.getLocation(), player.getHeading(), 0);
 					htmltext = event;
 				}
 				break;

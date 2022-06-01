@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -187,10 +187,7 @@ public class TarBeetleSpawn implements IXmlReader {
 					final Location location = _zones.get(Rnd.get(_zones.size())).getRandomPoint();
 					if (location != null) {
 						final L2Spawn spawn = new L2Spawn(18804);
-						spawn.setHeading(Rnd.get(65535));
-						spawn.setX(location.getX());
-						spawn.setY(location.getY());
-						spawn.setZ(GeoData.getInstance().getSpawnHeight(location));
+						spawn.setLocation(location.getX(), location.getY(), GeoData.getInstance().getSpawnHeight(location), Rnd.get(65535));
 						
 						final L2Npc npc = spawn.doSpawn();
 						npc.setIsNoRndWalk(true);

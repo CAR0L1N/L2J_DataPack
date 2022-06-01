@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -81,8 +81,7 @@ public final class NornilsGardenQuest extends AbstractInstance {
 					world.removeAllowed(player.getObjectId());
 					finishInstance(world, 5000);
 					
-					player.setInstanceId(0);
-					player.teleToLocation(world.ORIGIN_LOC);
+					player.teleToLocation(world.ORIGIN_LOC, 0, false);
 					htmltext = "32239-03.html";
 				}
 				break;

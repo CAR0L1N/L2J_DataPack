@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -110,8 +110,7 @@ public class Unstuck implements IUserCommandHandler {
 				activeChar.setIsIn7sDungeon(false);
 				activeChar.enableAllSkills();
 				activeChar.setIsCastingNow(false);
-				activeChar.setInstanceId(0);
-				activeChar.teleToLocation(TOWN);
+				activeChar.teleToLocation(TOWN, 0);
 			}
 		}, unstuckTimer));
 		return true;

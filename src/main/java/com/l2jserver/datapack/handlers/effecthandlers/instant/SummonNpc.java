@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -92,10 +92,8 @@ public final class SummonNpc extends AbstractEffect {
 				final L2DecoyInstance decoy = new L2DecoyInstance(npcTemplate, player, _despawnDelay);
 				decoy.setCurrentHp(decoy.getMaxHp());
 				decoy.setCurrentMp(decoy.getMaxMp());
-				decoy.setHeading(player.getHeading());
-				decoy.setInstanceId(player.getInstanceId());
 				decoy.setSummoner(player);
-				decoy.spawnMe(player.getX(), player.getY(), player.getZ());
+				decoy.spawnMe(player.getLocation());
 				player.setDecoy(decoy);
 				break;
 			}
@@ -104,22 +102,18 @@ public final class SummonNpc extends AbstractEffect {
 				final L2EffectPointInstance effectPoint = new L2EffectPointInstance(npcTemplate, player);
 				effectPoint.setCurrentHp(effectPoint.getMaxHp());
 				effectPoint.setCurrentMp(effectPoint.getMaxMp());
-				int x = player.getX();
-				int y = player.getY();
-				int z = player.getZ();
+				var loc = player.getLocation();
 				
 				if (info.getSkill().getTargetType() == TargetType.GROUND) {
 					final Location wordPosition = player.getActingPlayer().getCurrentSkillWorldPosition();
 					if (wordPosition != null) {
-						x = wordPosition.getX();
-						y = wordPosition.getY();
-						z = wordPosition.getZ();
+						loc = wordPosition;
 					}
 				}
 				
 				effectPoint.setIsInvul(true);
 				effectPoint.setSummoner(player);
-				effectPoint.spawnMe(x, y, z);
+				effectPoint.spawnMe(loc);
 				_despawnDelay = NpcData.getInstance().getTemplate(_npcId).getParameters().getInt("despawn_time") * 1000;
 				if (_despawnDelay > 0) {
 					effectPoint.scheduleDespawn(_despawnDelay);
@@ -142,10 +136,7 @@ public final class SummonNpc extends AbstractEffect {
 					y += (Rnd.nextBoolean() ? Rnd.get(20, 50) : Rnd.get(-50, -20));
 				}
 				
-				spawn.setX(x);
-				spawn.setY(y);
-				spawn.setZ(player.getZ());
-				spawn.setHeading(player.getHeading());
+				spawn.setLocation(x, y, player.getZ(), player.getHeading());
 				spawn.stopRespawn();
 				
 				final L2Npc npc = spawn.doSpawn(_isSummonSpawn);

@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -26,7 +26,7 @@ import com.l2jserver.gameserver.enums.audio.Sound;
 import com.l2jserver.gameserver.model.Location;
 import com.l2jserver.gameserver.model.actor.L2Npc;
 import com.l2jserver.gameserver.model.actor.instance.L2PcInstance;
-import com.l2jserver.gameserver.model.interfaces.IPositionable;
+import com.l2jserver.gameserver.model.interfaces.ILocational;
 import com.l2jserver.gameserver.model.quest.Quest;
 import com.l2jserver.gameserver.model.quest.QuestState;
 import com.l2jserver.gameserver.model.quest.State;
@@ -65,7 +65,7 @@ public class Q00025_HidingBehindTheTruth extends Quest {
 	// Misc
 	private static final int MIN_LVL = 66;
 	private static final HashMap<Integer, Location> TRIOL_PAWN_LOC = new HashMap<>();
-	private static final IPositionable COFFIN_LOC = new Location(60104, -35820, -681);
+	private static final ILocational COFFIN_LOC = new Location(60104, -35820, -681);
 	
 	public Q00025_HidingBehindTheTruth() {
 		super(25, Q00025_HidingBehindTheTruth.class.getSimpleName(), "Hiding Behind the Truth");

@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -565,10 +565,7 @@ public final class RainbowSpringsChateau extends ClanHallSiegeEngine {
 			if (_gourds[i] == null) {
 				try {
 					_gourds[i] = new L2Spawn(GOURDS[i]);
-					_gourds[i].setX(ARENAS[i].getX() + 150);
-					_gourds[i].setY(ARENAS[i].getY() + 150);
-					_gourds[i].setZ(ARENAS[i].getZ());
-					_gourds[i].setHeading(1);
+					_gourds[i].setLocation(ARENAS[i].getX() + 150, ARENAS[i].getY() + 150, ARENAS[i].getZ(), 1);
 					_gourds[i].setAmount(1);
 				} catch (Exception e) {
 					_log.warn("Unable to spawn guard for clan index {}!", i, e);

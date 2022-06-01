@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -82,7 +82,7 @@ public class AdminInstance implements IAdminCommandHandler {
 					activeChar.sendMessage("Incorrect target.");
 					return false;
 				}
-				target.setInstanceId(val);
+				target.setLocation(target.getLocation(), 0, val);
 				if (target instanceof L2PcInstance) {
 					L2PcInstance player = (L2PcInstance) target;
 					player.sendMessage("Admin set your instance to:" + val);

@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -59,8 +59,7 @@ public final class HideoutOfTheDawn extends AbstractInstance {
 				break;
 			}
 			case "32617-02.html": {
-				player.setInstanceId(0);
-				player.teleToLocation(JAINA_LOC, true);
+				player.teleToLocation(JAINA_LOC, 0, true);
 				htmltext = event;
 				break;
 			}

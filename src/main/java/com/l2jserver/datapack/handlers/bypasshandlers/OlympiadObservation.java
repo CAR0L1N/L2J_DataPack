@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -82,7 +82,7 @@ public class OlympiadObservation implements IBypassHandler {
 				final OlympiadGameTask nextArena = OlympiadGameManager.getInstance().getOlympiadTask(arenaId);
 				if (nextArena != null) {
 					activeChar.enterOlympiadObserverMode(nextArena.getZone().getSpectatorSpawns().get(0), arenaId);
-					activeChar.setInstanceId(OlympiadGameManager.getInstance().getOlympiadTask(arenaId).getZone().getInstanceId());
+					activeChar.setLocation(activeChar.getLocation(), activeChar.getHeading(), OlympiadGameManager.getInstance().getOlympiadTask(arenaId).getZone().getInstanceId());
 				}
 			}
 			return true;

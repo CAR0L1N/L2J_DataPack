@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -120,7 +120,6 @@ public class AdminMenu implements IAdminCommandHandler {
 			try {
 				String targetName = command.substring(21);
 				L2PcInstance player = L2World.getInstance().getPlayer(targetName);
-				activeChar.setInstanceId(player.getInstanceId());
 				teleportToCharacter(activeChar, player);
 			} catch (StringIndexOutOfBoundsException e) {
 			}
@@ -226,7 +225,6 @@ public class AdminMenu implements IAdminCommandHandler {
 		if (player.getObjectId() == activeChar.getObjectId()) {
 			player.sendPacket(SystemMessageId.CANNOT_USE_ON_YOURSELF);
 		} else {
-			activeChar.setInstanceId(player.getInstanceId());
 			activeChar.teleToLocation(player.getLocation(), true);
 			activeChar.sendMessage("You're teleporting yourself to character " + player.getName());
 		}

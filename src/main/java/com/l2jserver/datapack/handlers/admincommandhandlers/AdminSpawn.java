@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -319,17 +319,14 @@ public class AdminSpawn implements IAdminCommandHandler {
 			if (general().saveGmSpawnOnCustom()) {
 				spawn.setCustom(true);
 			}
-			spawn.setX(target.getX());
-			spawn.setY(target.getY());
-			spawn.setZ(target.getZ());
+			
 			spawn.setAmount(mobCount);
-			spawn.setHeading(activeChar.getHeading());
 			spawn.setRespawnDelay(respawnTime);
 			if (activeChar.getInstanceId() > 0) {
-				spawn.setInstanceId(activeChar.getInstanceId());
+				spawn.setLocation(target.getX(), target.getY(), target.getZ(), activeChar.getHeading(), activeChar.getInstanceId());
 				permanent = false;
 			} else {
-				spawn.setInstanceId(0);
+				spawn.setLocation(target.getX(), target.getY(), target.getZ(), activeChar.getHeading(), 0);
 			}
 			// TODO add checks for GrandBossSpawnManager
 			if (RaidBossSpawnManager.getInstance().isDefined(spawn.getId())) {

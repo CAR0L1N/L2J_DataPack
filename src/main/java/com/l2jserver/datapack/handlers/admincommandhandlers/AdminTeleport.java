@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -247,8 +247,7 @@ public class AdminTeleport implements IAdminCommandHandler {
 				regionName = "talking_island_town";
 		}
 		
-		player.teleToLocation(MapRegionManager.getInstance().getMapRegionByName(regionName).getSpawnLoc(), true);
-		player.setInstanceId(0);
+		player.teleToLocation(MapRegionManager.getInstance().getMapRegionByName(regionName).getSpawnLoc(), 0, true);
 		player.setIsIn7sDungeon(false);
 	}
 	
@@ -333,15 +332,14 @@ public class AdminTeleport implements IAdminCommandHandler {
 				activeChar.sendMessage("Sorry, player " + player.getName() + " is in Jail.");
 			} else {
 				// Set player to same instance as GM teleporting.
+				int instanceId = 0;
 				if ((activeChar != null) && (activeChar.getInstanceId() >= 0)) {
-					player.setInstanceId(activeChar.getInstanceId());
+					instanceId = activeChar.getInstanceId();
 					activeChar.sendMessage("You have recalled " + player.getName());
-				} else {
-					player.setInstanceId(0);
 				}
 				player.sendMessage("Admin is teleporting you.");
 				player.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
-				player.teleToLocation(loc, true);
+				player.teleToLocation(loc, instanceId, true);
 			}
 		}
 	}
@@ -364,14 +362,8 @@ public class AdminTeleport implements IAdminCommandHandler {
 			player.sendPacket(SystemMessageId.CANNOT_USE_ON_YOURSELF);
 		} else {
 			// move to targets instance
-			activeChar.setInstanceId(target.getInstanceId());
-			
-			int x = player.getX();
-			int y = player.getY();
-			int z = player.getZ();
-			
 			activeChar.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
-			activeChar.teleToLocation(new Location(x, y, z), true);
+			activeChar.teleToLocation(player.getLocation(), target.getInstanceId(), true);
 			
 			activeChar.sendMessage("You have teleported to character " + player.getName() + ".");
 		}
@@ -421,16 +413,12 @@ public class AdminTeleport implements IAdminCommandHandler {
 				if (general().saveGmSpawnOnCustom()) {
 					spawn.setCustom(true);
 				}
-				spawn.setX(activeChar.getX());
-				spawn.setY(activeChar.getY());
-				spawn.setZ(activeChar.getZ());
 				spawn.setAmount(1);
-				spawn.setHeading(activeChar.getHeading());
 				spawn.setRespawnDelay(respawnTime);
 				if (activeChar.getInstanceId() >= 0) {
-					spawn.setInstanceId(activeChar.getInstanceId());
+					spawn.setLocation(activeChar.getX(), activeChar.getY(), activeChar.getZ(), activeChar.getHeading(), activeChar.getInstanceId());
 				} else {
-					spawn.setInstanceId(0);
+					spawn.setLocation(activeChar.getX(), activeChar.getY(), activeChar.getZ(), activeChar.getHeading(), 0);
 				}
 				SpawnTable.getInstance().addNewSpawn(spawn, true);
 				spawn.init();
@@ -461,11 +449,8 @@ public class AdminTeleport implements IAdminCommandHandler {
 				if (general().saveGmSpawnOnCustom()) {
 					spawn.setCustom(true);
 				}
-				spawnDat.setX(activeChar.getX());
-				spawnDat.setY(activeChar.getY());
-				spawnDat.setZ(activeChar.getZ());
+				spawnDat.setLocation(activeChar.getX(), activeChar.getY(), activeChar.getZ(), activeChar.getHeading());
 				spawnDat.setAmount(1);
-				spawnDat.setHeading(activeChar.getHeading());
 				spawnDat.setRespawnMinDelay(43200);
 				spawnDat.setRespawnMaxDelay(129600);
 				

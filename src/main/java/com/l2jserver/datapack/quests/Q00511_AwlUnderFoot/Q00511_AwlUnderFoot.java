@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -376,7 +376,6 @@ public final class Q00511_AwlUnderFoot extends Quest {
 	}
 	
 	private void teleportPlayer(L2PcInstance player, int[] coords, int instanceId) {
-		player.setInstanceId(instanceId);
-		player.teleToLocation(coords[0], coords[1], coords[2]);
+		player.teleToLocation(coords[0], coords[1], coords[2], player.getHeading(), instanceId);
 	}
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -309,7 +309,7 @@ public final class Venom extends AbstractNpcAI {
 				cancelQuestTimer("tower_check", _venom, null);
 				break;
 		}
-		_loc.setLocation(_venom.getLocation());
+		_loc = _venom.getLocation();
 	}
 	
 	private void teleportTarget(L2PcInstance player) {

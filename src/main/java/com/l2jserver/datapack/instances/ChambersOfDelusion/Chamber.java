@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  * 
  * This file is part of L2J DataPack.
  * 
@@ -323,7 +323,7 @@ public abstract class Chamber extends AbstractInstance {
 			// Save location for teleport back into main hall
 			partyMember.getVariables().set(RETURN, Integer.toString(partyMember.getX()) + ";" + Integer.toString(partyMember.getY()) + ";" + Integer.toString(partyMember.getZ()));
 			
-			partyMember.setInstanceId(world.getInstanceId());
+			partyMember.setLocation(partyMember.getLocation(), partyMember.getHeading(), world.getInstanceId());
 			world.addAllowed(partyMember.getObjectId());
 		}
 		
@@ -368,7 +368,7 @@ public abstract class Chamber extends AbstractInstance {
 					int x = Integer.parseInt(coords[0]);
 					int y = Integer.parseInt(coords[1]);
 					int z = Integer.parseInt(coords[2]);
-					ret.setLocation(new Location(x, y, z));
+					ret = new Location(x, y, z);
 				} catch (Exception e) {
 				}
 			}

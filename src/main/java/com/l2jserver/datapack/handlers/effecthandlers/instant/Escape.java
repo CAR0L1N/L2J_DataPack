@@ -1,5 +1,5 @@
 /*
- * Copyright © 2004-2021 L2J DataPack
+ * Copyright © 2004-2022 L2J DataPack
  *
  * This file is part of L2J DataPack.
  *
@@ -55,8 +55,7 @@ public final class Escape extends AbstractEffect {
 			return;
 		}
 		
-		info.getEffected().teleToLocation(MapRegionManager.getInstance().getTeleToLocation(info.getEffected(), _escapeType), true);
+		info.getEffected().teleToLocation(MapRegionManager.getInstance().getTeleToLocation(info.getEffected(), _escapeType), 0, true);
 		info.getEffected().getActingPlayer().setIsIn7sDungeon(false);
-		info.getEffected().setInstanceId(0);
 	}
 }
