@@ -78,8 +78,7 @@ public final class SummonTrap extends AbstractEffect {
 		trap.setCurrentHp(trap.getMaxHp());
 		trap.setCurrentMp(trap.getMaxMp());
 		trap.setIsInvul(true);
-		trap.setHeading(player.getHeading());
-		trap.spawnMe(player.getX(), player.getY(), player.getZ());
+		trap.spawnMe(player.getLocation());
 		player.setTrap(trap);
 	}
 }

@@ -61,8 +61,8 @@ public final class HeadquarterCreate extends AbstractEffect {
 		final L2SiegeFlagInstance flag = new L2SiegeFlagInstance(player, NpcData.getInstance().getTemplate(HQ_NPC_ID), _isAdvanced, false);
 		flag.setTitle(player.getClan().getName());
 		flag.setCurrentHpMp(flag.getMaxHp(), flag.getMaxMp());
-		flag.setHeading(player.getHeading());
-		flag.spawnMe(player.getX(), player.getY(), player.getZ() + 50);
+		var loc = player.getLocation();
+		flag.spawnMe(loc.getX(), loc.getY(), loc.getZ() + 50, loc.getHeading(), loc.getInstanceId());
 		final Castle castle = CastleManager.getInstance().getCastle(player);
 		final Fort fort = FortManager.getInstance().getFort(player);
 		final SiegableHall hall = ClanHallSiegeManager.getInstance().getNearbyClanHall(player);

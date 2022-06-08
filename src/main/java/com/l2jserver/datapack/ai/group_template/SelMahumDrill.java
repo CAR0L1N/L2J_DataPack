@@ -160,8 +160,7 @@ public final class SelMahumDrill extends AbstractNpcAI {
 						final L2Npc soldier = npcSpawn.getLastSpawn();
 						if ((soldier != null) && !soldier.isDead() && (npcSpawn.getName() != null) && npcSpawn.getName().startsWith("smtg_drill_group") && !soldier.staysInSpawnLoc()
 							&& ((soldier.getAI().getIntention() == CtrlIntention.AI_INTENTION_ACTIVE) || (soldier.getAI().getIntention() == CtrlIntention.AI_INTENTION_IDLE))) {
-							soldier.setHeading(npcSpawn.getHeading());
-							soldier.teleToLocation(npcSpawn.getLocation(), false);
+							soldier.teleToLocation(npcSpawn.getLocation(), 0, false);
 						}
 					}
 				}

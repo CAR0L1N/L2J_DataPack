@@ -55,8 +55,8 @@ public final class OutpostCreate extends AbstractEffect {
 			final L2SiegeFlagInstance flag = new L2SiegeFlagInstance(player, NpcData.getInstance().getTemplate(HQ_NPC_ID), true, true);
 			flag.setTitle(player.getClan().getName());
 			flag.setCurrentHpMp(flag.getMaxHp(), flag.getMaxMp());
-			flag.setHeading(player.getHeading());
-			flag.spawnMe(player.getX(), player.getY(), player.getZ() + 50);
+			var loc = player.getLocation();
+			flag.spawnMe(loc.getX(), loc.getY(), loc.getZ() + 50, loc.getHeading(), loc.getInstanceId());
 			TerritoryWarManager.getInstance().setHQForClan(player.getClan(), flag);
 		}
 	}

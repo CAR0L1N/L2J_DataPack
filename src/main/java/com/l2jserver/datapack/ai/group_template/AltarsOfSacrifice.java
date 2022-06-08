@@ -54,14 +54,13 @@ public final class AltarsOfSacrifice extends AbstractNpcAI {
 			
 			final L2Spawn spawn = new L2Spawn(_bossNpcIds[getRandom(_bossNpcIds.length)]);
 			spawn.setAmount(1);
-			spawn.setHeading(getRandom(65536));
 			
 			int radius = getRandom(BOSS_MIN_SPAWN_RADIUS, BOSS_MAX_SPAWN_RADIUS);
 			double angleRadians = getRandom() * 2 * Math.PI;
 			int spawnX = (int) (radius * Math.cos(angleRadians)) + _middlePoint.getX();
 			int spawnY = (int) (radius * Math.sin(angleRadians)) + _middlePoint.getY();
 			
-			spawn.setXYZ(spawnX, spawnY, GeoData.getInstance().getHeight(spawnX, spawnY, _middlePoint.getZ()));
+			spawn.setLocation(spawnX, spawnY, GeoData.getInstance().getHeight(spawnX, spawnY, _middlePoint.getZ()), Location.RANDOM_HEADING_INDICATOR);
 			spawn.stopRespawn();
 			_spawnedBoss = spawn.spawnOne(false);
 		}

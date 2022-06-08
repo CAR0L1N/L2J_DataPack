@@ -90,7 +90,6 @@ public final class Summon extends AbstractEffect {
 		
 		summon.setCurrentHp(summon.getMaxHp());
 		summon.setCurrentMp(summon.getMaxMp());
-		summon.setHeading(player.getHeading());
 		
 		player.setPet(summon);
 		
